@@ -9,8 +9,22 @@ body {
   /* --- Barre de navigation --- */
   .navbar {
     background-color: linear-gradient(to bottom, #d6c8b7 0%, #f8f3ec 100%);
-    padding: 1rem;
+    /*padding: 1rem;*/
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 3rem; /* augmente légèrement l'espace vertical */
+  }
+  
+  .logo {
+    height: 150px;
+    margin-right: 2rem;
   }
   
   .navbar ul {
@@ -24,15 +38,16 @@ body {
   
   .navbar a {
     text-decoration: none;
-    color: #d7c1a0;
+    color: #5c4a32;
     font-weight: bold;
+    font-size: 1.6rem; /* légèrement plus grand */
     transition: color 0.3s;
   }
   
   .navbar a:hover,
   .navbar a.active {
-    color: #fff;
-    border-bottom: 2px solid #fff;
+    color: #2f2f2f;
+    border-bottom: 2px solid #2f2f2f;
   }
   
   /* --- Contenu principal --- */
@@ -69,4 +84,4 @@ body {
     object-fit: cover;
     box-shadow: none;
   }
-  
+
