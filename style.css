@@ -1,87 +1,228 @@
-/* --- Style global --- */
+/* --- Style global (valable sur toutes les pages) --- */
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f8f3ec; /* crème claire */
-    color: #333;
-  }
-  
-  /* --- Barre de navigation --- */
-  .navbar {
-    background-color: linear-gradient(to bottom, #d6c8b7 0%, #f8f3ec 100%);
-    /*padding: 1rem;*/
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
-  .navbar-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0.5rem 3rem; /* augmente légèrement l'espace vertical */
-  }
-  
-  .logo {
-    height: 150px;
-    margin-right: 2rem;
-  }
-  
-  .navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #5c4a32;
-    font-weight: bold;
-    font-size: 1.6rem; /* légèrement plus grand */
-    transition: color 0.3s;
-  }
-  
-  .navbar a:hover,
-  .navbar a.active {
-    color: #2f2f2f;
-    border-bottom: 2px solid #2f2f2f;
-  }
-  
-  /* --- Contenu principal --- */
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5rem 4rem;
-  }
-  
-  .text-content {
-    max-width: 50%;
-  }
-  
-  .text-content h1 {
-    font-size: 2.2rem;
-    color: #2e2b26;
-    margin-bottom: 0.5rem;
-  }
-  
-  .text-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  /* --- Image à droite --- */
-  .hero-image {
-    max-width: 40%;
-  }
-  
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: none;
-  }
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f3ec; /* crème claire */
+  color: #333;
+}
 
+/* --- Barre de navigation (commune à toutes les pages) --- */
+.navbar {
+  background-color: linear-gradient(to bottom, #d6c8b7 0%, #f8f3ec 100%);
+  /*padding: 1rem;*/
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 100px;
+  margin-right: 1.5rem;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #5c4a32;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #2f2f2f;
+  border-bottom: 2px solid #2f2f2f;
+}
+
+/* --- Conteneur central commun à toutes les pages --- */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* === PAGE D'ACCUEIL === */
+
+/* Bloc texte dans l'accueil */
+.text-content {
+  max-width: 50%;
+}
+
+.text-content h1 {
+  font-size: 2.2rem;
+  color: #2e2b26;
+  margin-bottom: 0.5rem;
+}
+
+.text-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Image dans la section d'accueil */
+.hero-image {
+  max-width: 40%;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: none;
+}
+
+/* Section texte + image côte à côte */
+.accueil-page .intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start; /* aligne le texte et l’image en haut */
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/* Texte à gauche */
+.accueil-page .intro-text {
+  flex: 1 1 50%;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Image à droite */
+.accueil-page .intro-image {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.accueil-page .intro-image img {
+  max-width: 350px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* === PAGE VISUALISATION === */
+
+.visualisation-page {
+  display: block;
+  padding: 2rem 5rem;
+}
+
+/* Titre centré */
+.visualisation-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Tableau des arbres */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+table th {
+  background-color: #f0e8dc;
+}
+
+/* Boutons sous le tableau */
+.button-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.button-row button {
+  padding: 0.8rem 1.5rem;
+  background-color: #5c4a32;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-row button:hover {
+  background-color: #3e3023;
+}
+
+/* === PAGE ESTIMATION ÂGE === */
+.estimation-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#form-age {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.form-group input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#form-age button {
+  padding: 0.8rem;
+  background-color: #5c4a32;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#form-age button:hover {
+  background-color: #3e3023;
+}
+
+.prediction-result {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2f2f2f;
+}

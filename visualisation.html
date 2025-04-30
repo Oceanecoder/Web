@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualisation des arbres</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-container">
+      <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
+      <nav>
+        <ul>
+          <li><a href="accueil.html">Accueil</a></li>
+          <li><a href="ajout.html">Ajout d’un arbre</a></li>
+          <li><a href="visualisation.html" class="active">Visualisation du parc</a></li>
+          <li><a href="cluster.html">Cluster</a></li>
+          <li><a href="estimation.html">Estimation Âge</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content visualisation-page">
+    <h1>Visualisation des arbres</h1>
+
+    <table id="arbre-table">
+      <thead>
+        <tr>
+          <th>Arbre à sélectionner</th>
+          <th>Espèce</th>
+          <th>Hauteur totale (m)</th>
+          <th>Hauteur tronc (m)</th>
+          <th>Diamètre tronc (cm)</th>
+          <th>Remarquable</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>État</th>
+          <th>Stade</th>
+          <th>Port</th>
+          <th>Pied</th>
+          <th>Cluster</th>
+          <th>Âge estimé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Les données seront injectées dynamiquement -->
+        <tr>
+          <td><input type="checkbox" class="select-arbre"></td>
+          <td>Chêne</td>
+          <td>15</td>
+          <td>2</td>
+          <td>40</td>
+          <td>Oui</td>
+          <td>49.846</td>
+          <td>3.287</td>
+          <td>En place</td>
+          <td>Adulte</td>
+          <td>Érigé</td>
+          <td>Isolé</td>
+          <td></td> <!-- Cluster -->
+          <td></td> <!-- Âge estimé -->
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="button-row">
+      <button id="predict-cluster">Prédire Cluster</button>
+      <button id="predict-age">Prédire Âge</button>
+    </div>
+  </main>
+
+  <script src="visualisation.js"></script>
+</body>
+</html>
