@@ -1,20 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Accueil - Patrimoine Arboré</title>
-        <link rel="stylesheet" href="style.css">
-      </head>
-    <body>
-        <header class="navbar">
-          <nav>
+<head>
+  <meta charset="UTF-8">
+  <title>Accueil - Patrimoine Arboré</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- Haut de la page web idem à toute -->
+<body>
+    <header class="navbar">
+        <div class="navbar-container">
+        <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
+        <nav>
             <ul>
-              <li><a href="accueil.html" class="active">Accueil</a></li>
-              <li><a href="ajout.html">Ajout d’un arbre</a></li>
-              <li><a href="visualisation.html">Visualisation du parc</a></li>
-              <li><a href="cluster.html">Cluster</a></li>
-              <li><a href="estimation.html">Estimation Âge</a></li>
+                <li><a href="accueil.html">Accueil</a></li>
+                <li><a href="ajout.html" class="active">Ajout d’un arbre</a></li>
+                <li><a href="visualisation.html">Visualisation du parc</a></li>
+                <li><a href="cluster.html">Cluster</a></li>
+                <li><a href="estimation.html">Estimation Âge</a></li>
             </ul>
-          </nav>
-        </header>
-</html>
+            </nav>
+        </div>
+    </header>
+</body>
+
+<!-- TODO Faire un bouton pour ajouter un arbre et renouvelle le formulaire -->
+<button type="submit" class="submit-btn">Ajouter un arbre</button>
+
+<!-- Faire le formulaire + faire le lien avec la base de données-->
+<section class="form-section">
+    <h2>Formulaire d'ajout d'un arbre</h2>
+    <form class="tree-form">
+      <div class="form-grid">
+        <label for="Espece">Espece:</label>
+        <select id="Espece" name="Espece">
+            <option value="">--Choisissez une espece--</option>
+            <!-- TODO Lien avec la BDD -->
+            <option>ouverture d'un magasin</option>
+            <option>fermeture d'un magasin</option>
+
+        </select>
+    
+        <label>Latitude <input type="text" name="latitude" required></label>
+        <label>Longitude <input type="text" name="longitude" required></label>
+        
+        <label>Hauteur totale <input type="text" name="hauteur_totale" required></label>
+        <label>Hauteur du tronc <input type="text" name="hauteur_tronc" required></label>
+        <label>Diamètre du tronc <input type="text" name="diametre_tronc" required></label>
+        
+        <label for="Stade de développement" required>Stade de développement:</label>
+        <select id="Stade de développement" name="Stade de développement">
+            <option value="">--Choisissez un stade de développement--</option>
+            <!-- TODO Lien avec la BDD -->
+            <option>ouverture d'un magasin</option>
+            <option>fermeture d'un magasin</option>
+        </select>
+
+        <label for="État de l’arbre" required>État de l’arbre:</label>
+        <select id="État de l’arbre" name="État de l’arbre">
+            <option value="">--Choisissez l'état de l’arbre--</option>
+            <!-- TODO Lien avec la BDD -->
+            <option>ouverture d'un magasin</option>
+            <option>fermeture d'un magasin</option>
+        </select>
+
+        <label for="Remarquable" required>Remarquable</label>
+        <select id="Remarquable" name="Remarquable">
+            <option>Oui</option>
+            <option>Non</option>
+        </select>
+        
+        <label for="Type de port" required>Type de port:</label>
+        <select id="Type de port" name="Type de port">
+            <option value="">--Choisissez le type de port--</option>
+            <!-- TODO Lien avec la BDD -->
+            <option>ouverture d'un magasin</option>
+            <option>fermeture d'un magasin</option>
+        </select>
+
+        <label for="Type de pied " required>Type de pied :</label>
+        <select id="Type de pied " name="Type de pied ">
+            <option value="">--Choisissez le type de pied --</option>
+            <!-- TODO Lien avec la BDD -->
+            <option>ouverture d'un magasin</option>
+            <option>fermeture d'un magasin</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-btn">Ajouter</button>
+    </form>
+  </section>
+
+
+</section>
