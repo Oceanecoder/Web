@@ -1,0 +1,72 @@
+/* --- Style global --- */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f3ec; /* crème claire */
+    color: #333;
+  }
+  
+  /* --- Barre de navigation --- */
+  .navbar {
+    background-color: linear-gradient(to bottom, #d6c8b7 0%, #f8f3ec 100%);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: #d7c1a0;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover,
+  .navbar a.active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  /* --- Contenu principal --- */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5rem 4rem;
+  }
+  
+  .text-content {
+    max-width: 50%;
+  }
+  
+  .text-content h1 {
+    font-size: 2.2rem;
+    color: #2e2b26;
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* --- Image à droite --- */
+  .hero-image {
+    max-width: 40%;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: none;
+  }
+  
