@@ -1,33 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Accueil - Patrimoine Arboré</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<!-- Haut de la page web idem à toute -->
-<body>
-    <header class="navbar">
-        <div class="navbar-container">
-        <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
-        <nav>
+    <head>
+        <meta charset="UTF-8">
+        <title>Accueil - Patrimoine Arboré</title>
+        <link rel="stylesheet" href="style.css">
+      </head>
+    <body>
+        <header class="navbar">
+          <nav>
             <ul>
-                <li><a href="accueil.html">Accueil</a></li>
-                <li><a href="ajout.html" class="active">Ajout d’un arbre</a></li>
-                <li><a href="visualisation.html">Visualisation du parc</a></li>
-                <li><a href="cluster.html">Cluster</a></li>
-                <li><a href="estimation.html">Estimation Âge</a></li>
+              <li><a href="accueil.html" class="active">Accueil</a></li>
+              <li><a href="ajout.html">Ajout d’un arbre</a></li>
+              <li><a href="visualisation.html">Visualisation du parc</a></li>
+              <li><a href="cluster.html">Cluster</a></li>
+              <li><a href="estimation.html">Estimation Âge</a></li>
             </ul>
-            </nav>
-        </div>
-    </header>
-</body>
+          </nav>
+        </header>
 
 <!-- TODO Faire un bouton pour ajouter un arbre et renouvelle le formulaire -->
 <button type="submit" class="submit-btn">Ajouter un arbre</button>
 
 <!-- Faire le formulaire + faire le lien avec la base de données-->
+<form id="form-ajout-arbre" method="post" action="/ajouter-arbre">
 <section class="form-section">
     <h2>Formulaire d'ajout d'un arbre</h2>
     <form class="tree-form">
