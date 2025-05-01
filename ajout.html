@@ -1,89 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Accueil - Patrimoine Arboré</title>
-        <link rel="stylesheet" href="style.css">
-      </head>
-    <body>
-        <header class="navbar">
-          <nav>
-            <ul>
-              <li><a href="accueil.html" class="active">Accueil</a></li>
-              <li><a href="ajout.html">Ajout d’un arbre</a></li>
-              <li><a href="visualisation.html">Visualisation du parc</a></li>
-              <li><a href="cluster.html">Cluster</a></li>
-              <li><a href="estimation.html">Estimation Âge</a></li>
-            </ul>
-          </nav>
-        </header>
-
-<!-- TODO Faire un bouton pour ajouter un arbre et renouvelle le formulaire -->
-<button type="submit" class="submit-btn">Ajouter un arbre</button>
-
-<!-- Faire le formulaire + faire le lien avec la base de données-->
-<form id="form-ajout-arbre" method="post" action="/ajouter-arbre">
-<section class="form-section">
-    <h2>Formulaire d'ajout d'un arbre</h2>
-    <form class="tree-form">
-      <div class="form-grid">
-        <label for="Espece">Espece:</label>
-        <select id="Espece" name="Espece">
-            <option value="">--Choisissez une espece--</option>
-            <!-- TODO Lien avec la BDD -->
-            <option>ouverture d'un magasin</option>
-            <option>fermeture d'un magasin</option>
-
+<head>
+  <meta charset="UTF-8">
+  <title>Ajout d'un arbre - Patrimoine Arboré</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-container">
+      <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
+    <nav>
+      <ul>
+        <li><a href="accueil.html" >Accueil</a></li>
+        <li><a href="ajout.html" class="active">Ajout d’un arbre</a></li>
+        <li><a href="visualisation.html">Visualisation du parc</a></li>
+        <li><a href="cluster.html">Cluster</a></li>
+        <li><a href="estimation.html">Estimation Âge</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- Section formulaire -->
+<section class="form-section ajout-page">
+  <h1>Ajout d’un arbre</h1>
+  <form class="tree-form" id="form-ajout-arbre" method="post" action="/ajouter-arbre">
+    <div class="form-grid">
+      <label>
+        Espèce *
+        <select name="Espece" required>
+          <option value="">--Choisissez une espèce--</option>
         </select>
-    
-        <label>Latitude <input type="text" name="latitude" required></label>
-        <label>Longitude <input type="text" name="longitude" required></label>
-        
-        <label>Hauteur totale <input type="text" name="hauteur_totale" required></label>
-        <label>Hauteur du tronc <input type="text" name="hauteur_tronc" required></label>
-        <label>Diamètre du tronc <input type="text" name="diametre_tronc" required></label>
-        
-        <label for="Stade de développement" required>Stade de développement:</label>
-        <select id="Stade de développement" name="Stade de développement">
-            <option value="">--Choisissez un stade de développement--</option>
-            <!-- TODO Lien avec la BDD -->
-            <option>ouverture d'un magasin</option>
-            <option>fermeture d'un magasin</option>
-        </select>
+      </label>
 
-        <label for="État de l’arbre" required>État de l’arbre:</label>
-        <select id="État de l’arbre" name="État de l’arbre">
-            <option value="">--Choisissez l'état de l’arbre--</option>
-            <!-- TODO Lien avec la BDD -->
-            <option>ouverture d'un magasin</option>
-            <option>fermeture d'un magasin</option>
-        </select>
+      <label>
+        Latitude *
+        <input type="text" name="latitude" required>
+      </label>
 
-        <label for="Remarquable" required>Remarquable</label>
-        <select id="Remarquable" name="Remarquable">
-            <option>Oui</option>
-            <option>Non</option>
-        </select>
-        
-        <label for="Type de port" required>Type de port:</label>
-        <select id="Type de port" name="Type de port">
-            <option value="">--Choisissez le type de port--</option>
-            <!-- TODO Lien avec la BDD -->
-            <option>ouverture d'un magasin</option>
-            <option>fermeture d'un magasin</option>
-        </select>
+      <label>
+        Longitude *
+        <input type="text" name="longitude" required>
+      </label>
 
-        <label for="Type de pied " required>Type de pied :</label>
-        <select id="Type de pied " name="Type de pied ">
-            <option value="">--Choisissez le type de pied --</option>
-            <!-- TODO Lien avec la BDD -->
-            <option>ouverture d'un magasin</option>
-            <option>fermeture d'un magasin</option>
+      <label>
+        Hauteur totale *
+        <input type="text" name="hauteur_totale" required>
+      </label>
+
+      <label>
+        Hauteur du tronc *
+        <input type="text" name="hauteur_tronc" required>
+      </label>
+
+      <label>
+        Diamètre du tronc *
+        <input type="text" name="diametre_tronc" required>
+      </label>
+
+      <label>
+        Stade de développement *
+        <select name="stade_de_developpement" required>
+          <option value="">--Choisissez un stade--</option>
         </select>
-      </div>
-      <button type="submit" class="submit-btn">Ajouter</button>
-    </form>
-  </section>
+      </label>
 
+      <label>
+        État de l’arbre *
+        <select name="etat_arbre" required>
+          <option value="">--Choisissez un état--</option>
+        </select>
+      </label>
 
+      <label>
+        Remarquable *
+        <select name="remarquable" required>
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+        </select>
+      </label>
+
+      <label>
+        Type de port *
+        <select name="type_port" required>
+          <option value="">--Choisissez le port--</option>
+        </select>
+      </label>
+
+      <label>
+        Type de pied *
+        <select name="type_pied" required>
+          <option value="">--Choisissez le pied--</option>
+        </select>
+      </label>
+    </div>
+
+    <button type="submit" class="submit-btn">AJOUTER</button>
+  </form>
+
+  <p class="confirmation-message" style="display: none;">
+    Votre arbre a été ajouté avec succès !
+  </p>
 </section>
+
+</body>
+</html>

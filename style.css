@@ -119,6 +119,73 @@ body {
   object-fit: contain;
 }
 
+
+/* PAGE AJOUT D'UN ARBRE  */
+.form-section {
+  background-color: #f0e8dc;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 4px;
+  max-width: 1200px;
+}
+
+.tree-form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.tree-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #5c4a32;
+}
+
+.tree-form input,
+.tree-form select {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #d0c3b1;
+  font-size: 1rem;
+  color: #2f2f2f;
+}
+
+.tree-form input:focus,
+.tree-form select:focus {
+  outline: none;
+  background-color: #c7b6a3;
+}
+
+.tree-form button.submit-btn {
+  grid-column: 1 / -1;
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  background-color: #003b66;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  justify-self: end;
+}
+
+.tree-form button.submit-btn:hover {
+  background-color: #002b4c;
+}
+
+/* Message de confirmation */
+.confirmation-message {
+  text-align: center;
+  color: #2f4f2f;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
 /* === PAGE VISUALISATION === */
 
 .visualisation-page {
