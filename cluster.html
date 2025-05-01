@@ -20,3 +20,36 @@
     </nav>
   </div>
 </header>
+<main class="cluster-main">
+  <div class="map-wrapper">
+    <div class="cluster-map" id="map1"></div>
+  </div>
+</main>
+
+<!-- Leaflet JS pour la carte A FAIRE LE LIEN AVEC LE JS DE LYDERIC ET BDD-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const coords1 = [
+      [49.846, 3.287],
+      [49.847, 3.289],
+      [49.845, 3.288]
+    ];
+    const coords2 = [
+      [49.846, 3.287],
+      [49.847, 3.290],
+      [49.845, 3.285]
+    ];
+
+    const map1 = L.map('map1').setView([49.846, 3.287], 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map1);
+    coords1.forEach(c => L.marker(c).addTo(map1));
+
+  });
+</script>
+</body>
+</html>

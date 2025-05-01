@@ -121,6 +121,11 @@ body {
 
 
 /* PAGE AJOUT D'UN ARBRE  */
+.ajout-page h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .form-section {
   background-color: #f0e8dc;
   padding: 2rem;
@@ -163,7 +168,7 @@ body {
   grid-column: 1 / -1;
   margin-top: 2rem;
   padding: 0.8rem 2rem;
-  background-color: #003b66;
+  background-color: #5c4a32;
   color: white;
   border: none;
   font-weight: bold;
@@ -174,7 +179,7 @@ body {
 }
 
 .tree-form button.submit-btn:hover {
-  background-color: #002b4c;
+  background-color: #5c4a32;
 }
 
 /* Message de confirmation */
@@ -187,12 +192,6 @@ body {
 }
 
 /* === PAGE VISUALISATION === */
-
-.visualisation-page {
-  display: block;
-  padding: 2rem 5rem;
-}
-
 /* Titre centré */
 .visualisation-page h1 {
   text-align: center;
@@ -219,26 +218,74 @@ table th {
 }
 
 /* Boutons sous le tableau */
-.button-row {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.button-row button {
+.btn-link {
+  display: inline-block;
   padding: 0.8rem 1.5rem;
   background-color: #5c4a32;
   color: white;
   font-weight: bold;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
 }
 
-.button-row button:hover {
+.btn-link:hover {
   background-color: #3e3023;
+}
+
+/* Carte en dessous */
+#map {
+  height: 400px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* PAGE CLUSTERS */
+
+.cluster-page h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.cluster-page p {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.carte-container {
+  display: flex;
+  justify-content: center;
+}
+
+.carte-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Pour la carte */
+.cluster-main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.map-wrapper {
+  background-color: #5c4a32; 
+  border: 2px solid #5c4a32;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cluster-map {
+  height: 700px;
+  width: 1200px;
+  border-radius: 10px;
 }
 
 /* === PAGE ESTIMATION ÂGE === */
@@ -293,78 +340,76 @@ table th {
   font-weight: bold;
   color: #2f2f2f;
 }
+/* === ESTIMATION - AFFICHAGE DU RÉSULTAT === */
+.resultat-estimation {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 2rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
 
-/* === PAGE CLUSTER === */
-.cluster-page h1 {
+.recap-box {
+  flex: 1 1 45%;
+  background-color: #f0e8dc;
+  border: 2px solid #5c4a32;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.recap-box h3 {
+  font-size: 1.1rem;
   text-align: center;
+  margin-bottom: 1.5rem;
+  color: #5c4a32;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.recap-box ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.recap-box li {
   margin-bottom: 1rem;
 }
 
-.cluster-page p {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.carte-container {
-  display: flex;
-  justify-content: center;
-}
-
-.carte-container img {
-  max-width: 100%;
-  height: auto;
+.result-box {
+  flex: 1 1 45%;
+  background-color: #fff;
+  border: 2px dashed #2f3923;
   border-radius: 12px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* === PAGE AJOUT === */
-.ajout-page h1 {
+  padding: 2rem;
   text-align: center;
-  margin-bottom: 2rem;
-}
-
-#form-ajout-arbre {
-  max-width: 600px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
+.result-box .result-label {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #2f2f2f;
 }
 
-.form-group label {
+.result-box .age-value {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 3rem;
+  color: #2f3923;
   font-weight: bold;
-  margin-bottom: 0.3rem;
+  letter-spacing: 4px;
 }
 
-.form-group input {
-  padding: 0.6rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-#form-ajout-arbre button {
-  padding: 0.8rem;
-  background-color: #5c4a32;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#form-ajout-arbre button:hover {
-  background-color: #3e3023;
-}
-
-.confirmation-message {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: green;
-  font-weight: bold;
+.result-box .model-info {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: #555;
 }

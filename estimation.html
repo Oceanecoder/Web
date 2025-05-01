@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Bandeau -->
   <header class="navbar">
     <div class="navbar-container">
       <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
@@ -22,37 +21,21 @@
     </div>
   </header>
 
-  <!-- Contenu -->
-  <main class="content estimation-page">
-    <h1>Estimation de l’âge d’un arbre</h1>
+  <main class="estimation-age-container">
+    <div class="recap-box">
+      <h3>RECAPITULATIF DE L’ARBRE</h3>
+      <ul>
+        <li><strong>Espèce :</strong> Chêne</li>
+        <li><strong>Hauteur totale :</strong> 12.5 m</li>
+        <li><strong>Hauteur du tronc :</strong> 4.2 m</li>
+        <li><strong>Diamètre du tronc :</strong> 45.3 cm</li>
+      </ul>
+    </div>
 
-    <form id="form-age" method="post" action="/predict-age">
-      <div class="form-group">
-        <label for="espece">Espèce</label>
-        <input type="text" id="espece" name="espece" required>
-      </div>
-
-      <div class="form-group">
-        <label for="hauteur_totale">Hauteur totale (m)</label>
-        <input type="number" step="0.1" id="hauteur_totale" name="hauteur_totale" required>
-      </div>
-
-      <div class="form-group">
-        <label for="hauteur_tronc">Hauteur du tronc (m)</label>
-        <input type="number" step="0.1" id="hauteur_tronc" name="hauteur_tronc" required>
-      </div>
-
-      <div class="form-group">
-        <label for="diametre_tronc">Diamètre du tronc (cm)</label>
-        <input type="number" step="0.1" id="diametre_tronc" name="diametre_tronc" required>
-      </div>
-
-      <button type="submit">Prédire Âge</button>
-    </form>
-
-    <!-- Affichage du résultat (à remplir dynamiquement) -->
-    <div id="resultat-age" class="prediction-result">
-      <!-- Âge estimé affiché ici après prédiction -->
+    <div class="result-box">
+      <p class="result-label">L’arbre sélectionné a</p>
+      <p class="age-value">XXX ANS</p>
+      <p class="model-info">Selon le modèle de prédiction K means : XXX années</p>
     </div>
   </main>
 </body>
