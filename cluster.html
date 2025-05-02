@@ -26,30 +26,66 @@
   </div>
 </main>
 
-<!-- Leaflet JS pour la carte A FAIRE LE LIEN AVEC LE JS DE LYDERIC ET BDD-->
+<!-- Leaflet JS pour la carte -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const coords1 = [
-      [49.846, 3.287],
-      [49.847, 3.289],
-      [49.845, 3.288]
-    ];
-    const coords2 = [
-      [49.846, 3.287],
-      [49.847, 3.290],
-      [49.845, 3.285]
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+      const arbres = [
+        { nom: "Chêne", hauteur: 15, diametre: 40, lat: 49.846, lon: 3.287 },
+        { nom: "Érable", hauteur: 12, diametre: 35, lat: 49.847, lon: 3.289 },
+        { nom: "Hêtre", hauteur: 10, diametre: 30, lat: 49.845, lon: 3.288 }
+      ];
 
-    const map1 = L.map('map1').setView([49.846, 3.287], 14);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map1);
-    coords1.forEach(c => L.marker(c).addTo(map1));
+      const clusterCouleurs = ["red", "blue", "green", "orange", "purple"];
 
-  });
-</script>
+      // Initialisation de la carte Leaflet
+      const map1 = L.map('map1').setView([49.846, 3.287], 14);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map1);
+
+      // Envoie une requête AJAX à PHP pour chaque arbre et récupère les clusters
+      arbres.forEach(arbre => {
+        fetch("predire_cluster.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `hauteur=${arbre.hauteur}&diametre=${arbre.diametre}`
+        })
+        .then(res => {
+          // Log de la réponse du serveur
+          console.log("Réponse du serveur : ", res);
+          return res.json();  // Convertir la réponse en JSON
+        })
+        .then(data => {
+          // Log des données reçues
+          console.log("Données reçues : ", data);
+
+          // Vérifie si le cluster est retourné
+          if (data.cluster) {
+            const cluster = parseInt(data.cluster);
+            const couleur = clusterCouleurs[cluster % clusterCouleurs.length];
+
+            // Ajout du marker avec la couleur du cluster sur la carte
+            const marker = L.circleMarker([arbre.lat, arbre.lon], {
+              radius: 10,
+              color: couleur,
+              fillColor: couleur,
+              fillOpacity: 0.8
+            }).addTo(map1);
+
+            marker.bindPopup(`${arbre.nom}<br>Cluster : ${cluster}`);
+          } else {
+            console.error("Erreur dans les données reçues : ", data.error);
+          }
+        })
+        .catch(err => {
+          console.error("Erreur dans la requête AJAX :", err);
+        });
+      });
+    });
+  </script>
+  
 </body>
 </html>
