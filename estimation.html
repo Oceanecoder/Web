@@ -5,14 +5,14 @@
   <title>Estimation de l'âge d’un arbre</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="estimation-page">
   <header class="navbar">
     <div class="navbar-container">
       <img src="Saint-Quentin.png" alt="Logo Saint-Quentin" class="logo">
       <nav>
         <ul>
-          <li><a href="accueil.html">Accueil</a></li>
-          <li><a href="ajout.html">Ajout d’un arbre</a></li>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="ajout.html">Ajouter un arbre</a></li>
           <li><a href="visualisation.html">Visualisation du parc</a></li>
           <li><a href="cluster.html">Cluster</a></li>
           <li><a href="estimation.html" class="active">Estimation Âge</a></li>
@@ -21,22 +21,72 @@
     </div>
   </header>
 
-  <main class="estimation-age-container">
+  <main class="resultat-estimation">
     <div class="recap-box">
       <h3>RECAPITULATIF DE L’ARBRE</h3>
       <ul>
-        <li><strong>Espèce :</strong> Chêne</li>
-        <li><strong>Hauteur totale :</strong> 12.5 m</li>
-        <li><strong>Hauteur du tronc :</strong> 4.2 m</li>
-        <li><strong>Diamètre du tronc :</strong> 45.3 cm</li>
+        <li><strong>Espèce :</strong> <span id="recap-espece">Chargement...</span></li>
+        <li><strong>Hauteur totale :</strong> <span id="recap-haut-tot">Chargement...</span></li>
+        <li><strong>Hauteur du tronc :</strong> <span id="recap-haut-tronc">Chargement...</span></li>
+        <li><strong>Diamètre du tronc :</strong> <span id="recap-tronc-diam">Chargement...</span></li>
       </ul>
     </div>
 
     <div class="result-box">
       <p class="result-label">L’arbre sélectionné a</p>
-      <p class="age-value">XXX ANS</p>
-      <p class="model-info">Selon le modèle de prédiction K means : XXX années</p>
+      <p class="age-value">Calcul en cours...</p>
+      <p class="model-info">Selon le modèle de prédiction : Calcul en cours...</p>
     </div>
   </main>
+
+  <script>
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+  
+    // Récupération des paramètres depuis l'URL
+    const espece = getParam("espece");
+    const hauteurTotale = getParam("hauteur_totale");
+    const hauteurTronc = getParam("hauteur_tronc");
+    const diametreTronc = getParam("diametre_tronc");
+  
+    // Affichage dans le récapitulatif
+    document.getElementById("recap-espece").textContent = espece;
+    document.getElementById("recap-haut-tot").textContent = `${hauteurTotale} m`;
+    document.getElementById("recap-haut-tronc").textContent = `${hauteurTronc} m`;
+    document.getElementById("recap-tronc-diam").textContent = `${diametreTronc} cm`;
+  
+    // Requête vers le backend Flask (port 5000)
+    fetch("http://127.0.0.1:5000/estimer_age", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        espece: espece,
+        hauteur_totale: parseFloat(hauteurTotale),
+        hauteur_tronc: parseFloat(hauteurTronc),
+        diametre_tronc: parseFloat(diametreTronc)
+      })
+    })
+    .then(response => {
+      console.log("Réponse brute :", response);
+      if (!response.ok) throw new Error("Réponse invalide du serveur");
+      return response.json();
+    })
+    .then(data => {
+      console.log("Données retournées :", data);
+      if (data.age !== undefined) {
+        document.querySelector(".age-value").textContent = `${data.age} ANS`;
+        document.querySelector(".model-info").textContent = `Selon le modèle de prédiction : ${data.age} années`;
+      } else {
+        throw new Error("Format de réponse invalide");
+      }
+    })
+    .catch(err => {
+      console.error("Erreur de prédiction :", err);
+      document.querySelector(".age-value").textContent = "Erreur";
+      document.querySelector(".model-info").textContent = "Impossible de prédire l'âge.";
+    });
+  </script>
+  
 </body>
 </html>
