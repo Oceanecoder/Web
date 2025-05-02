@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Visualisation du Parc</title>
   <link rel="stylesheet" href="style.css" />
-
 </head>
 <body class="visualisation-page">
 
@@ -15,7 +14,7 @@
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="ajout.html">Ajouter un arbre</a></li>
-        <li><a href="visualisation.html" class="active" >Visualisation du parc</a></li>
+        <li><a href="visualisation.html" class="active">Visualisation du parc</a></li>
         <li><a href="cluster.html">Cluster</a></li>
         <li><a href="estimation.html">Estimation Âge</a></li>
       </ul>
@@ -44,7 +43,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- ICI C'EST A MODIFIER AVEC LA BDD -->
         <tr>
           <td><input type="radio" name="select-arbre" class="select-arbre" /></td>
           <td>Arbre 1</td>
@@ -79,40 +77,54 @@
     </table>
 
     <div class="map-buttons">
-      <a href="estimation.html" class="btn-link">PRÉDIRE L’ÂGE</a>
+      <a id="btn-estimation" class="btn-link disabled">PRÉDIRE L’ÂGE</a>
       <a href="cluster.html" class="btn-link">PRÉDIRE LES CLUSTERS</a>
     </div>
 
     <div class="map-container">
-  <div id="map"></div>
-</div>
+      <div id="map"></div>
+    </div>
 
+    <!-- Leaflet CSS et JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- Leaflet CSS pour la carte -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  </main>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const map = L.map('map').setView([49.846, 3.287], 13);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
-
-      const arbres = [
-        { lat: 49.846, lon: 3.287 },
-        { lat: 49.847, lon: 3.290 }
-      ];
-
-      arbres.forEach(arbre => {
-        L.marker([arbre.lat, arbre.lon]).addTo(map);
+    <!-- Script JS pour gérer la sélection et l'estimation -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const map = L.map('map').setView([49.846, 3.287], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+    
+        const arbres = [
+          { lat: 49.846, lon: 3.287 },
+          { lat: 49.847, lon: 3.290 }
+        ];
+        arbres.forEach(arbre => {
+          L.marker([arbre.lat, arbre.lon]).addTo(map);
+        });
+    
+        const radios = document.querySelectorAll('.select-arbre');
+        const btnEstimation = document.getElementById('btn-estimation');
+    
+        radios.forEach(radio => {
+          radio.addEventListener('change', () => {
+            const selectedRow = radio.closest('tr');
+            const espece = selectedRow.cells[2].textContent.trim();
+            const hauteur_totale = selectedRow.cells[3].textContent.trim();
+            const hauteur_tronc = selectedRow.cells[4].textContent.trim();
+            const diametre_tronc = selectedRow.cells[5].textContent.trim();
+    
+            const url = `estimation.html?espece=${encodeURIComponent(espece)}&hauteur_totale=${encodeURIComponent(hauteur_totale)}&hauteur_tronc=${encodeURIComponent(hauteur_tronc)}&diametre_tronc=${encodeURIComponent(diametre_tronc)}`;
+    
+            btnEstimation.classList.remove('disabled');
+            btnEstimation.setAttribute('href', url);
+          });
+        });
       });
-    });
-  </script>
+    </script>
+    
+  </main>
 </body>
 </html>
