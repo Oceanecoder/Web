@@ -76,7 +76,7 @@
       console.log("Données retournées :", data);
       if (data.age !== undefined) {
         document.querySelector(".age-value").textContent = `${data.age} ANS`;
-        document.querySelector(".model-info").textContent = `Selon le modèle de prédiction : ${data.age} années`;
+        document.querySelector(".model-info").textContent = `Selon le modèle de prédiction : Forrest Regressor`;
       } else {
         throw new Error("Format de réponse invalide");
       }
